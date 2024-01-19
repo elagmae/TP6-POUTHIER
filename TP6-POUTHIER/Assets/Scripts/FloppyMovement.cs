@@ -17,10 +17,7 @@ public class FloppyMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("t'as appuyé c'est bien");
             Saut();
         }
-
-
     }
 }
