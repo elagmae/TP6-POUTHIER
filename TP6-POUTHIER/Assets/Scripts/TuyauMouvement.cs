@@ -9,7 +9,7 @@ public class TuyauMouvement : MonoBehaviour
     [SerializeField] private float _vitesseBgMouvement;
     public GameObject Tuyau;
     public List<GameObject> ListeTuyaux;
-    [SerializeField] private Vector2 PositionFin;
+    private Vector2 PositionFin = new Vector2(-10,0);
     private float temps;
     public GameObject ArriveeTuyaux;
     private int index = 0;
@@ -27,7 +27,7 @@ public class TuyauMouvement : MonoBehaviour
 
     IEnumerator Destruction()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         if (ListeTuyaux.Count>1) 
         {
             Destroy(ListeTuyaux[index]);            
@@ -49,7 +49,7 @@ public class TuyauMouvement : MonoBehaviour
     {   
     
         temps += Time.deltaTime;
-        if (temps > 2f)
+        if (temps > 1f)
         {
             CreationTuyaux();              
             temps = 0f;
