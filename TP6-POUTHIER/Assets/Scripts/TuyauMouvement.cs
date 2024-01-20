@@ -1,60 +1,63 @@
+// <copyright file = "TuyauMouvement.cs" company = "elagmae">
+// Copyright (c) elagmae. All rights reserved.
+// </copyright>
+
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TuyauMouvement : MonoBehaviour
 {
-    [SerializeField] private float _vitesseBgMouvement;
-    public GameObject Tuyau;
-    public List<GameObject> ListeTuyaux;
-    private Vector2 PositionFin = new Vector2(-10,0);
+    [SerializeField]
+    private GameObject arriveeTuyaux;
+    [SerializeField]
+    private float vitesseBgMouvement;
     private float temps;
-    public GameObject ArriveeTuyaux;
     private int index = 0;
+    [SerializeField]
+    private GameObject tuyau;
+    [SerializeField]
+    private List<GameObject> listeTuyaux;
+
     public void CreationTuyaux()
     {
-        float aleatoire = Random.Range(-2.0f,3.0f);
-        Tuyau = Instantiate(Tuyau, new Vector2(6,aleatoire), Quaternion.identity);
-        ListeTuyaux.Add(Tuyau.gameObject);
-    }    
+        float aleatoire = Random.Range(-2.0f, 3.0f);
+        this.tuyau = Instantiate(this.tuyau, new Vector2(6.5f, aleatoire), Quaternion.identity);
+        this.listeTuyaux.Add(this.tuyau.gameObject);
+    }
 
     public void MouvementTuyaux()
     {
-        Tuyau.transform.Translate(-Time.deltaTime*_vitesseBgMouvement, 0, 0, ArriveeTuyaux.transform);
+        this.tuyau.transform.Translate(-Time.deltaTime * this.vitesseBgMouvement, 0, 0, this.arriveeTuyaux.transform);
     }
 
-    IEnumerator Destruction()
+    private IEnumerator Destruction()
     {
         yield return new WaitForSeconds(1f);
-        if (ListeTuyaux.Count>1) 
+        if (this.listeTuyaux.Count > 1)
         {
-            Destroy(ListeTuyaux[index]);            
-            ListeTuyaux.Remove(ListeTuyaux[index]);
+            Destroy(this.listeTuyaux[this.index]);
+            this.listeTuyaux.Remove(this.listeTuyaux[this.index]);
         }
-
     }
 
-    IEnumerator Start()
+    private IEnumerator Start()
     {
-        while(Tuyau!=false)
+        while (this.tuyau != false)
         {
-            yield return StartCoroutine("Destruction");
+            yield return this.StartCoroutine("Destruction");
         }
-
     }
 
-        private void Update()
-    {   
-    
-        temps += Time.deltaTime;
-        if (temps > 1f)
+    private void Update()
+    {
+        this.temps += Time.deltaTime;
+        if (this.temps > 1f)
         {
-            CreationTuyaux();              
-            temps = 0f;
+            this.CreationTuyaux();
+            this.temps = 0f;
         }
-        MouvementTuyaux();
-    }
 
+        this.MouvementTuyaux();
+    }
 }

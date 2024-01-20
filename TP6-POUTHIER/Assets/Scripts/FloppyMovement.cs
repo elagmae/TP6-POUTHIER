@@ -1,23 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+// <copyright file = "FloppyMovement.cs" company = "elagmae">
+// Copyright (c) elagmae. All rights reserved.
+// </copyright>
+
 using UnityEngine;
 
 public class FloppyMovement : MonoBehaviour
 {
-    public Rigidbody2D Rigidbody;
-    [SerializeField] private Vector2 _hauteur;
+    [SerializeField]
+    private new Rigidbody2D rigidbody;
+    [SerializeField]
+    private Vector2 hauteur;
 
     public void Saut()
     {
-        Rigidbody.velocity = Vector3.zero;
-        this.Rigidbody.AddForce(_hauteur,ForceMode2D.Impulse);
+        this.rigidbody.velocity = Vector3.zero;
+        this.rigidbody.AddForce(this.hauteur, ForceMode2D.Impulse);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Saut();
+            this.Saut();
         }
     }
 }
