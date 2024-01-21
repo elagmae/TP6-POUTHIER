@@ -1,10 +1,11 @@
-// <copyright file = "TuyauMouvement.cs" company = "elagmae">
+// <copyright file="TuyauMouvement.cs" company="elagmae">
 // Copyright (c) elagmae. All rights reserved.
 // </copyright>
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TuyauMouvement : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class TuyauMouvement : MonoBehaviour
     public void CreationTuyaux()
     {
         float aleatoire = Random.Range(-2.0f, 3.0f);
-        this.tuyau = Instantiate(this.tuyau, new Vector2(6.5f, aleatoire), Quaternion.identity);
+        this.tuyau = Instantiate(this.tuyau, new Vector2(7f, aleatoire), Quaternion.identity);
         this.listeTuyaux.Add(this.tuyau.gameObject);
     }
 

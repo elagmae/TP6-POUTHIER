@@ -1,4 +1,4 @@
-// <copyright file = "FloppyMovement.cs" company = "elagmae">
+// <copyright file="FloppyMovement.cs" company="elagmae">
 // Copyright (c) elagmae. All rights reserved.
 // </copyright>
 
