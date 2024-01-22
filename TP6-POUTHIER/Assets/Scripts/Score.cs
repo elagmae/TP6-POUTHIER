@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    private int score = 0;
     [SerializeField]
     private TextMeshProUGUI scoreUI;
     [SerializeField]
@@ -15,8 +14,8 @@ public class Score : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.score++;
-        this.scoreUI.text = this.score.ToString();
-        this.scoreFinal.text = this.score.ToString();
+        GameManager.Instance.score++;
+        this.scoreUI.text = GameManager.Instance.score.ToString();
+        this.scoreFinal.text = GameManager.Instance.score.ToString();
     }
 }

@@ -3,6 +3,7 @@
 // </copyright>
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -16,6 +17,11 @@ public class Fin : MonoBehaviour
     [SerializeField]
     private GameObject score;
 
+    public void LoadTheScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         this.vivant = false;
@@ -25,10 +31,7 @@ public class Fin : MonoBehaviour
     {
         if (this.vivant == false)
         {
-            this.GetComponent<FloppyMovement>().enabled = false;
-            this.finTuyaux.GetComponent<TuyauMouvement>().enabled = false;
-            this.finUI.SetActive(true);
-            this.score.SetActive(false);
+            LoadTheScene("Fin");
         }
     }
 }

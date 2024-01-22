@@ -22,7 +22,7 @@ public class TuyauMouvement : MonoBehaviour
 
     public void CreationTuyaux()
     {
-        float aleatoire = Random.Range(-2.1f, 2.4f);
+        float aleatoire = Random.Range(-2.1f, 2.3f);
         this.tuyau = Instantiate(this.tuyau, new Vector2(7f, aleatoire), Quaternion.identity);
         this.listeTuyaux.Add(this.tuyau.gameObject);
     }
