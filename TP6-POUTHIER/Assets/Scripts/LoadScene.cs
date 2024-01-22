@@ -8,6 +8,10 @@ public class LoadScene : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        if (sceneName == "Jeu")
+        {
+            GameManager.Instance.score = 0;
+        }
     }
 
     public void Exit()
