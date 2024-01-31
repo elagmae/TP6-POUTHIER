@@ -34,7 +34,7 @@ public class TuyauMouvement : MonoBehaviour
 
     private IEnumerator Destruction()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.2f);
         if (this.listeTuyaux.Count > 1)
         {
             Destroy(this.listeTuyaux[this.index]);
@@ -53,7 +53,7 @@ public class TuyauMouvement : MonoBehaviour
     private void Update()
     {
         this.temps += Time.deltaTime;
-        if (this.temps > 1f)
+        if (this.temps > 1.2f)
         {
             this.CreationTuyaux();
             this.temps = 0f;
