@@ -10,12 +10,6 @@ using UnityEngine.UIElements;
 public class Fin : MonoBehaviour
 {
     private bool vivant = true;
-    [SerializeField]
-    private GameObject finTuyaux;
-    [SerializeField]
-    private GameObject finUI;
-    [SerializeField]
-    private GameObject score;
 
     public void LoadTheScene(string sceneName)
     {

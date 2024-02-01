@@ -427,9 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea49c5eac905a3459d0cb526148abce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finTuyaux: {fileID: 1518345662}
-  finUI: {fileID: 90355746}
-  score: {fileID: 533195412}
 --- !u!114 &518696986
 MonoBehaviour:
   m_ObjectHideFlags: 0

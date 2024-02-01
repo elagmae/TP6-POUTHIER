@@ -11,21 +11,12 @@ public class TuyauMouvement : MonoBehaviour
 {
     [SerializeField]
     private GameObject arriveeTuyaux;
-    [SerializeField]
-    private float vitesseBgMouvement;
-    private float temps;
+    private float vitesseBgMouvement = 15;
     private int index = 0;
     [SerializeField]
     private GameObject tuyau;
     [SerializeField]
     private List<GameObject> listeTuyaux;
-
-    public void CreationTuyaux()
-    {
-        float aleatoire = Random.Range(-2.1f, 2.3f);
-        this.tuyau = Instantiate(this.tuyau, new Vector2(7f, aleatoire), Quaternion.identity);
-        this.listeTuyaux.Add(this.tuyau.gameObject);
-    }
 
     public void MouvementTuyaux()
     {
@@ -34,7 +25,7 @@ public class TuyauMouvement : MonoBehaviour
 
     private IEnumerator Destruction()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.8f);
         if (this.listeTuyaux.Count > 1)
         {
             Destroy(this.listeTuyaux[this.index]);
@@ -42,23 +33,27 @@ public class TuyauMouvement : MonoBehaviour
         }
     }
 
+    private IEnumerator Creation()
+    {
+        yield return new WaitForSeconds(0.3f);
+        {
+            float aleatoire = Random.Range(-2.1f, 2.3f);
+            this.tuyau = Instantiate(this.tuyau, new Vector2(7f, aleatoire), Quaternion.identity);
+            this.listeTuyaux.Add(this.tuyau.gameObject);
+        }
+    }
+
     private IEnumerator Start()
     {
         while (this.tuyau != false)
         {
+            yield return this.StartCoroutine("Creation");
             yield return this.StartCoroutine("Destruction");
         }
     }
 
     private void Update()
     {
-        this.temps += Time.deltaTime;
-        if (this.temps > 1.2f)
-        {
-            this.CreationTuyaux();
-            this.temps = 0f;
-        }
-
         this.MouvementTuyaux();
     }
 }
